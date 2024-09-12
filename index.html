@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            border: 1px solid black;
+            display: block;
+            margin: auto;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" width="800" height="600"></canvas>
+    <script>
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function drawCircle(x, y, radius, color){
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, 2 * Math.PI);
+            ctx.fillStyle = color; 
+            ctx.fill();
+        }
+        function drawRect(x, y, radius, color){
+            const width = canvas.width;
+            const height = canvas.height;
+        }
+
+        function drawRGB(){
+            const width = canvas.width;
+            const height = canvas.height; 
+
+            drawCircle(width / 4, height / 4, 50, 'red');
+
+            drawRect((width / 2) - 50, (height / 2) - 25, 100, 50, 'green' );
+
+            const gradient = ctx.createLinearGradient(0, 0, width, height);
+            gradient.addColorStop(0, 'red');
+            gradient.addColorStop(0.5, 'green');
+            gradient.addColorStop(1, 'blue');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(50, height - 100, width - 100, 50);
+        }
+
+        drawRGB();
+    </script>
+</body>
+</html>
